@@ -13,6 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController username = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController result = TextEditingController();
+  final TextEditingController cats = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +43,21 @@ class _LoginPageState extends State<LoginPage> {
               listener: (context, state) {
                 if (state is SuccessLoginState) {
                   result.text = state.result ?? "None";
+                  cats.text = state.listCats.first.text ?? "None";
                 }
               },
-              child: TextField(
-                controller: result,
-                decoration: InputDecoration(label: Text("Result")),
+              child: Column(
+                children: [
+                  TextField(
+                    controller: result,
+                    decoration: InputDecoration(label: Text("Result")),
+                  ),
+                  TextField(
+                    controller: cats,
+                    readOnly: true,
+                    decoration: InputDecoration(label: Text("Cats")),
+                  ),
+                ],
               ),
             ),
           ],

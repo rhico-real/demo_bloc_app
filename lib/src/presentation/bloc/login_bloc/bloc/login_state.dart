@@ -17,7 +17,8 @@ class LoadingLoginState extends LoginState {
 
 class SuccessLoginState extends LoginState {
   final String? result;
-  const SuccessLoginState(this.result);
+  final List<Cats> listCats;
+  const SuccessLoginState(this.result, this.listCats);
 }
 
 class ErrorLoginState extends LoginState {
